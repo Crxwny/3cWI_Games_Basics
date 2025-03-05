@@ -10,6 +10,7 @@ public class Demo extends BasicGame {
     private float cSpeed;
     private int direction;
     private float speed = 4;
+    private Rectangle rect;
 
 
     public Demo(String title) {
@@ -24,11 +25,13 @@ public class Demo extends BasicGame {
         this.circleY = 100;
         this.rectX = 200;
         this.rectY = 100;
+        this.rect = new Rectangle(50, 50,4);
 
     }
 
     @Override
     public void update(GameContainer gameContainer, int deltaTime) throws SlickException {
+        this.rect.update(deltaTime);
         this.ovalX += deltaTime / this.oSpeed;
 
         if (this.ovalX >= 600 || this.ovalX <= 100) {
@@ -80,6 +83,7 @@ public class Demo extends BasicGame {
             graphics.drawOval(this.ovalX, 10, 100, 40);
             graphics.drawOval(50, this.circleY, 50, 50);
             graphics.drawRect(this.rectX, this.rectY, 50, 50);
+            this.rect.render(graphics);
 
         }
 
