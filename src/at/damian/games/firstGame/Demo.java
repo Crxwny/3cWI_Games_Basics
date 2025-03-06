@@ -2,15 +2,21 @@ package at.damian.games.firstGame;
 
 import org.newdawn.slick.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Demo extends BasicGame {
+    private enum DIRECTION {RIGHT, DOWN, LEFT, UP};
     private float ovalX;
     private float circleY;
     private float rectX, rectY;
     private float oSpeed;
     private float cSpeed;
-    private int direction;
     private float speed = 4;
+    private DIRECTION objectdirection;
     private Rectangle rect;
+    private List<Rectangle> rects;
 
 
     public Demo(String title) {
@@ -25,7 +31,15 @@ public class Demo extends BasicGame {
         this.circleY = 100;
         this.rectX = 200;
         this.rectY = 100;
-        this.rect = new Rectangle(50, 50,4);
+        this.rect = new Rectangle(100, 100,5);
+        this.objectdirection = DIRECTION.RIGHT;
+
+        this.rects = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < 100; i++) {
+            Rectangle r = new Rectangle(random.nextInt(600), random.nextInt(600), random.nextInt(50));
+            rects.add(r);
+        }
 
     }
 
@@ -46,35 +60,35 @@ public class Demo extends BasicGame {
 
 
         float deltaSpeed = deltaTime / speed;
-        switch (direction) {
-            case 0:
-                rectX += deltaSpeed;
-                if (rectX >= 500) {
-                    rectX = 500;
-                    direction = 1;
-                }
-                break;
-            case 1:
-                rectY += deltaSpeed;
-                if (rectY >= 400) {
-                    rectY = 400;
-                    direction = 2;
-                }
-                break;
-            case 2:
-                rectX -= deltaSpeed;
-                if (rectX <= 150) {
-                    rectX = 150;
-                    direction = 3;
-                }
-                break;
-            case 3:
-                rectY -= deltaSpeed;
-                if (rectY <= 100) {
-                    rectY = 100;
-                    direction = 0;
-                }
-                break;
+        if (objectdirection == DIRECTION.RIGHT) {
+            rectX += deltaSpeed;
+            if (rectX >= 500) {
+                rectX = 500;
+                objectdirection = DIRECTION.DOWN;
+            }
+        } else if (objectdirection == DIRECTION.DOWN) {
+            rectY += deltaSpeed;
+            if (rectY >= 400) {
+                rectY = 400;
+                objectdirection = DIRECTION.LEFT;
+            }
+        } else if (objectdirection == DIRECTION.LEFT) {
+            rectX -= deltaSpeed;
+            if (rectX <= 150) {
+                rectX = 150;
+                objectdirection = DIRECTION.UP;
+            }
+        } else if (objectdirection == DIRECTION.UP) {
+            rectY -= deltaSpeed;
+            if (rectY <= 100) {
+                rectY = 100;
+                objectdirection = DIRECTION.RIGHT;
+            }
+
+        }
+
+        for (Rectangle r : rects) {
+            r.update(deltaTime);
         }
         }
 
@@ -84,6 +98,9 @@ public class Demo extends BasicGame {
             graphics.drawOval(50, this.circleY, 50, 50);
             graphics.drawRect(this.rectX, this.rectY, 50, 50);
             this.rect.render(graphics);
+            for (Rectangle r : rects) {
+                r.render(graphics);
+            }
 
         }
 
