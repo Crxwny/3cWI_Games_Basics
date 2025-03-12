@@ -3,6 +3,7 @@ package at.damian.games.firstGame;
 import org.newdawn.slick.*;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -17,6 +18,7 @@ public class Demo extends BasicGame {
     private DIRECTION objectdirection;
     private Rectangle rect;
     private List<Rectangle> rects;
+    private List<Circle> circles;
 
 
     public Demo(String title) {
@@ -39,6 +41,14 @@ public class Demo extends BasicGame {
         for (int i = 0; i < 100; i++) {
             Rectangle r = new Rectangle(random.nextInt(600), random.nextInt(600), random.nextInt(50));
             rects.add(r);
+
+
+        }
+
+        this.circles = new LinkedList<>();
+        for (int i = 0; i < 50; i++) {
+            Circle c = new Circle();
+            this.circles.add(c);
         }
 
     }
@@ -90,7 +100,13 @@ public class Demo extends BasicGame {
         for (Rectangle r : rects) {
             r.update(deltaTime);
         }
+
+        for (Circle c : circles) {
+            c.update(deltaTime);
         }
+        }
+
+
 
         @Override
         public void render (GameContainer gameContainer, Graphics graphics) throws SlickException {
@@ -100,6 +116,10 @@ public class Demo extends BasicGame {
             this.rect.render(graphics);
             for (Rectangle r : rects) {
                 r.render(graphics);
+            }
+
+            for (Circle c : circles) {
+                c.render(graphics);
             }
 
         }
