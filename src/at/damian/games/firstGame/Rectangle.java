@@ -2,16 +2,20 @@ package at.damian.games.firstGame;
 
 import org.newdawn.slick.Graphics;
 
-public class Rectangle implements  Actor{
-    private enum DIRECTION {RIGHT, LEFT, UP, DOWN};
+public class Rectangle implements  Actor {
+    public enum DIRECTION {LEFT, RIGHT}
+
+    ;
     private float x;
     private float y;
     private float speed;
+    private DIRECTION direction;
 
-    public Rectangle(int x, int y, float speed) {
+    public Rectangle(int x, int y, float speed, DIRECTION direction) {
         this.x = x;
         this.y = y;
         this.speed = speed;
+        this.direction = direction;
     }
 
     public void render(Graphics graphics) {
@@ -20,10 +24,19 @@ public class Rectangle implements  Actor{
     }
 
     public void update(int deltaTime) {
-        this.x += (float)deltaTime/this.speed;
-        if(this.x > 600) {
-            this.x = 0;
-        }
+        if (direction == DIRECTION.RIGHT) {
+            this.x += (float) deltaTime / this.speed;
+            if (this.x > (800-10)) {
+                this.x = 0;
+            }
+        } else if (direction == DIRECTION.LEFT) {
+            this.x -= (float) deltaTime / this.speed;
+            if (this.x < (10)) {
+                this.x = 800;
+            }
 
+
+        }
     }
 }
+

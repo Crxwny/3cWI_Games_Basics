@@ -34,7 +34,7 @@ public class Demo extends BasicGame {
         this.circleY = 100;
         this.rectX = 200;
         this.rectY = 100;
-        this.rect = new Rectangle(100, 100, 5);
+        //this.rect = new Rectangle(100, 100, 5);
         this.objectdirection = DIRECTION.RIGHT;
         Random random = new Random();
 
@@ -45,11 +45,11 @@ public class Demo extends BasicGame {
             actors.add(c);
         }
 
-        for (int i = 0; i < 100; i++) {
-            Rectangle r = new Rectangle(random.nextInt(600), random.nextInt(600), random.nextInt(50));
-            actors.add(r);
-
-        }
+//        for (int i = 0; i < 100; i++) {
+//            Rectangle r = new Rectangle(random.nextInt(600), random.nextInt(600), random.nextInt(50));
+//            actors.add(r);
+//
+//        }
     }
 
         @Override
