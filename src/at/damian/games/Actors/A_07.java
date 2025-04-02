@@ -1,7 +1,6 @@
-package at.damian.games.firstGame;
+package at.damian.games.Actors;
 import org.newdawn.slick.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package at.damian.games.firstGame;
+package at.damian.games.Images;
 
 import org.newdawn.slick.Graphics;
 
