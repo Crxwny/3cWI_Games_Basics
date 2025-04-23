@@ -5,23 +5,21 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-import java.util.List;
-
-public class Obstacle1 implements Actor {
-    private Image Obstacle1Image;
+public class Obstacle2 implements Actor{
+    private Image Obstacle2Image;
     private float x,y;
 
 
 
-    public Obstacle1() throws SlickException {
-        this.Obstacle1Image = new Image("testdata/obstacle-1.gif").getScaledCopy(50,50);
-        this.x = 850;
+    public Obstacle2() throws SlickException {
+        this.Obstacle2Image = new Image("testdata/obstacle-2.gif").getScaledCopy(100,50);
+        this.x = 2000;
         this.y= 275;
     }
 
     @Override
     public void render(Graphics graphics) {
-        Obstacle1Image.draw(this.x, this.y);
+        Obstacle2Image.draw(this.x, this.y);
 
     }
 
@@ -47,7 +45,7 @@ public class Obstacle1 implements Actor {
 
     @Override
     public float getWidth() {
-        return 50;
+        return 100;
     }
 
     @Override
@@ -55,3 +53,5 @@ public class Obstacle1 implements Actor {
         return 50;
     }
 }
+
+

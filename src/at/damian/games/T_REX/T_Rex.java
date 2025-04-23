@@ -6,8 +6,8 @@ public class T_Rex implements Actor {
     private Animation runningRex;
     private float x, y;
     private float ground = 275;
-    private float gravity = 0.03f;
-    private float jumpStrength = -3f;
+    private float gravity = 0.02f;
+    private float jumpStrength = -2.5f;
     private float velocityY = 0;
 
     public T_Rex() throws SlickException {
@@ -43,4 +43,25 @@ public class T_Rex implements Actor {
             velocityY = 0;
         }
     }
+
+    @Override
+    public float getX() {
+        return this.x;
+    }
+
+    @Override
+    public float getY() {
+        return this.y;
+    }
+
+    @Override
+    public float getWidth() {
+        return 50;
+    }
+
+    @Override
+    public float getHeight() {
+        return 50;
+    }
+
 }
