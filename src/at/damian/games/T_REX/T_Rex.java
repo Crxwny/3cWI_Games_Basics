@@ -6,8 +6,8 @@ public class T_Rex implements Actor {
     private Animation runningRex;
     private float x, y;
     private float ground = 275;
-    private float gravity = 0.5f;
-    private float jumpStrength = -10f;
+    private float gravity = 0.03f;
+    private float jumpStrength = -3f;
     private float velocityY = 0;
 
     public T_Rex() throws SlickException {
@@ -30,15 +30,13 @@ public class T_Rex implements Actor {
     public void update(GameContainer gameContainer, int delta) {
         runningRex.update(delta);
 
-        Input input = gameContainer.getInput();
-
-        if (input.isKeyPressed(Input.KEY_SPACE) && y >= ground) {
+        if (gameContainer.getInput().isKeyPressed(Input.KEY_SPACE) && y >= ground) {
             velocityY = jumpStrength;
         }
 
         velocityY += gravity;
-
         y += velocityY;
+
 
         if (y > ground) {
             y = ground;
