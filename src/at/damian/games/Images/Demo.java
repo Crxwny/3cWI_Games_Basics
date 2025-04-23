@@ -24,7 +24,7 @@ public class Demo extends BasicGame {
     @Override
     public void update(GameContainer gameContainer, int i) throws SlickException {
         for (Actor actor : this.actors) {
-            actor.update(i);
+            actor.update(gameContainer,i);
         }
 
     }
@@ -35,6 +35,11 @@ public class Demo extends BasicGame {
             actor.render(graphics);
         }
 
+    }
+
+    @Override
+    public void keyPressed(int key, char c) {
+        System.out.println(key + "pressed");
     }
 
     public static void main (String[]argv){

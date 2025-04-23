@@ -1,8 +1,6 @@
 package at.damian.games.Images;
 
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 
 public class Ben10 implements Actor {
     private Image Ben10Image;
@@ -16,8 +14,14 @@ public class Ben10 implements Actor {
     }
 
     @Override
-    public void update(int delta) {
-        this.x++;
+    public void update(GameContainer gameContainer, int delta) {
+        if (gameContainer.getInput().isKeyDown(Input.KEY_A)) {
+            this.x -= ((float) 1 /delta);
+        }
+
+        if (gameContainer.getInput().isKeyDown(Input.KEY_D)) {
+            this.x += ((float) 1 /delta);
+        }
 
     }
 
