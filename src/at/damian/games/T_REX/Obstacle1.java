@@ -10,6 +10,8 @@ import java.util.List;
 public class Obstacle1 implements Actor {
     private Image Obstacle1Image;
     private float x,y;
+    private boolean hasPassed = false;
+    private float speed = 0.65f;
 
 
 
@@ -27,7 +29,7 @@ public class Obstacle1 implements Actor {
 
     @Override
     public void update(GameContainer gameContainer, int delta) {
-        this.x-=0.65;
+        this.x-=speed;
 
     }
 
@@ -54,4 +56,22 @@ public class Obstacle1 implements Actor {
     public float getHeight() {
         return 50;
     }
+
+    @Override
+    public boolean hasPassed() {
+        return this.hasPassed;
+    }
+
+    @Override
+    public void setHasPassed(boolean hasPassed) {
+        this.hasPassed = hasPassed;
+    }
+
+    @Override
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
+
 }
+
+

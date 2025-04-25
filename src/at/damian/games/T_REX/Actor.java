@@ -14,4 +14,7 @@ public interface Actor {
      float getY();
      float getWidth();
      float getHeight();
-    }
+     boolean hasPassed();
+    void setHasPassed(boolean hasPassed);
+    void setSpeed(float speed);
+}

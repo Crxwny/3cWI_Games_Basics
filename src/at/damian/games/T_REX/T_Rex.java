@@ -6,9 +6,10 @@ public class T_Rex implements Actor {
     private Animation runningRex;
     private float x, y;
     private float ground = 275;
-    private float gravity = 0.02f;
-    private float jumpStrength = -2.5f;
+    private float gravity = 0.01f;
+    private float jumpStrength = -1.8f;
     private float velocityY = 0;
+    private boolean jumping = false;
 
     public T_Rex() throws SlickException {
         this.runningRex = new Animation();
@@ -32,6 +33,12 @@ public class T_Rex implements Actor {
 
         if (gameContainer.getInput().isKeyPressed(Input.KEY_SPACE) && y >= ground) {
             velocityY = jumpStrength;
+        }
+
+        if (this.y < ground) {
+            jumping = true;
+        } else {
+            jumping = false;
         }
 
         velocityY += gravity;
@@ -64,4 +71,22 @@ public class T_Rex implements Actor {
         return 50;
     }
 
+    @Override
+    public boolean hasPassed() {
+        return false;
+    }
+
+    @Override
+    public void setHasPassed(boolean hasPassed) {
+
+    }
+
+    @Override
+    public void setSpeed(float speed) {
+        return;
+    }
+
+    public boolean isJumping() {
+        return jumping;
+    }
 }
